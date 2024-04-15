@@ -49,6 +49,20 @@
         .server button:hover {
             background-color: darkorange;
         }
+
+        /* Popup styles */
+        .popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 20px;
+            border-radius: 5px;
+            z-index: 999;
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -56,14 +70,31 @@
         <div class="server">
             <h2>Server 1</h2>
             <p>Description of Server 1</p>
-            <button>Join</button>
+            <button onclick="showPopup('Server 1')">Join</button>
         </div>
         <div class="server">
             <h2>Server 2</h2>
             <p>Description of Server 2</p>
-            <button>Join</button>
+            <button onclick="showPopup('Server 2')">Join</button>
         </div>
         <!-- Add more server entries as needed -->
     </div>
+
+    <!-- Popup window -->
+    <div id="popup" class="popup">
+        <p id="popupText"></p>
+    </div>
+
+    <script>
+        function showPopup(serverName) {
+            var popup = document.getElementById('popup');
+            var popupText = document.getElementById('popupText');
+            popupText.innerHTML = "Connecting to " + serverName + "<br>Player: 0"; // You can modify this message as needed
+            popup.style.display = 'block';
+            setTimeout(function() {
+                popup.style.display = 'none';
+            }, 4000); // 4 seconds
+        }
+    </script>
 </body>
 </html>
